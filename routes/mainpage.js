@@ -21,9 +21,9 @@ app.use(express.urlencoded({extended : true}));
 
 
 
-const superAdminUrl = 'http://localhost:8000/superMain';
-const dutyAdminUrl = 'http://localhost:8000/dutyMain';
-const normalUrl = 'http://localhost:8000/normalMain';
+const superAdminUrl = 'http://localhost:5000/superMain';
+const dutyAdminUrl = 'http://localhost:5000/dutyMain';
+const normalUrl = 'http://localhost:5000/normalMain';
 
 
 router.get('/superadm', function(req, res, next){
