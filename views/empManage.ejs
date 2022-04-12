@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="./css/superEmp.css">
 <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <link rel="stylesheet" href="./css/owl.carousel.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+<script src="./js/empManage.js"></script>   
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -44,7 +47,7 @@
    
    
    <li>                                   
-    <a href="/superMain">
+    <a href="/superadm">
     <i class="fa fa-home fa-lg"></i>
     <span class="nav-text">메인페이지</span>
     </a>
@@ -92,7 +95,7 @@
               <div class="table-responsive">
 
 
-                <form action="#" method="get">
+                <form action="https://dutyapi.azurewebsites.net/api/emp/team" method="get">
                 부서
                 <select name="deptNo" onchange="categoryChange(this)">
                   <option>==해당 부서를 선택하세요==</option>
@@ -104,10 +107,10 @@
                 <select id="teamNo" name="teamNo">
                   <option>==해당 팀을 선택하세요==</option>
                 </select>
-
+              
                 </form>
 
-
+<br>
 
                 <table class="table custom-table">
                   <thead>
@@ -139,8 +142,8 @@
                       <td><%=emps[i].empNo%></td>
                       <td><%=emps[i].empName%></td>
                       <td>
-                        <%=emps[i].deptNo%>
-                        <small class="d-block"><%=emps[i].teamNo%></small>
+                        <%=emps[i].deptName%>
+                        <small class="d-block"><%=emps[i].teamName%></small>
                       </td>
                       <td><%=emps[i].position%></td>
                       <td><%=emps[i].empEntry%></td>

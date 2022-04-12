@@ -25,18 +25,6 @@ const superAdminUrl = 'http://localhost:8000/superMain';
 const dutyAdminUrl = 'http://localhost:8000/dutyMain';
 const normalUrl = 'http://localhost:8000/normalMain';
 
-// router.get('/', function(req, res, next){
-//     request(superAdminUrl,function(err,res){
-
-//  });
-//  res.render('superMain',{
-//   isLogined: true, 
-//   empName: req.session.empName, 
-//   authCode: req.session.authCode,
-//   empNo: req.session.empNo
-// });
-// });
-
 
 router.get('/superadm', function(req, res, next){
       res.render('superMain', {
@@ -48,9 +36,8 @@ router.get('/superadm', function(req, res, next){
   });
 
 
-
 // router.get('/empManage', function(req, res, next){
-//   request("https://dutyapi.azurewebsites.net/api/emp/", function(error, res, body){
+//   request("https://dutyapi.azurewebsites.net/api/emp/total", function(error, response, body){
 //     if(error){
 //       console.log(error)
 //     }
@@ -59,12 +46,16 @@ router.get('/superadm', function(req, res, next){
 //     emps:obj,
 //     isLogined: true, 
 //     empName: req.session.empName, 
+//     authCode: req.session.authCode,
+//     empNo: req.session.empNo
 //   })
 //   })
+
 // })
 
+
 router.get('/empManage', function(req, res, next){
-  request("https://localhost:5000/api/emp/", function(error, res, body){
+  request("https://dutyapi.azurewebsites.net/api/emp/total", function(error, response, body){
     if(error){
       console.log(error)
     }
@@ -73,9 +64,13 @@ router.get('/empManage', function(req, res, next){
     emps:obj,
     isLogined: true, 
     empName: req.session.empName, 
+    authCode: req.session.authCode,
+    empNo: req.session.empNo
   })
   })
+
 })
+
 
 // router.get('/', function(req, res, next) {
 //     request(superAdminUrl, function(err,res){
