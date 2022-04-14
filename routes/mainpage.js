@@ -25,6 +25,9 @@ app.use(express.urlencoded({extended : true}));
 const superAdminUrl = 'http://localhost:5000/superMain';
 const dutyAdminUrl = 'http://localhost:5000/dutyMain';
 const normalUrl = 'http://localhost:5000/normalMain';
+const normalMainDutyCheck = 'http://localhost:5000/normalMainDutyCheck';
+const teamDutyAdmin = 'http://localhost:5000/teamDutyAdmin';
+const teamDutyCheck = 'http://localhost:5000/teamDutyCheck';
 
 
 router.get('/superadm', function(req, res, next){
@@ -92,6 +95,28 @@ router.get('/dutyadm', function(req, res, next){
 });
 
 
+router.get('/teamDutyAd', function(req, res, next){
+  request(teamDutyAdmin,function(err,res){
+  });
+  res.render('teamDutyAdmin',{
+    isLogined: true, 
+    empName: req.session.empName, 
+    authCode: req.session.authCode,
+    empNo: req.session.empNo
+  });
+});
+
+router.get('/teamDutyCK', function(req, res, next){
+  request(teamDutyCheck,function(err,res){
+  });
+  res.render('teamDutyCheck',{
+    isLogined: true, 
+    empName: req.session.empName, 
+    authCode: req.session.authCode,
+    empNo: req.session.empNo
+  });
+});
+
 router.get('/normal', function(req, res, next){
     request(normalUrl,function(err,res){
     });
@@ -101,6 +126,17 @@ router.get('/normal', function(req, res, next){
       authCode: req.session.authCode,
       empNo: req.session.empNo
     });
+});
+
+router.get('/normalDutyCK', function(req, res, next){
+  request(normalMainDutyCheck,function(err,res){
+  });
+  res.render('normalMainDutyCK',{
+    isLogined: true, 
+    empName: req.session.empName, 
+    authCode: req.session.authCode,
+    empNo: req.session.empNo
+  });
 });
 
 

@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended : true}));
 
 
-const url = 'http://localhost:8000/api/emp/level';
+const url = 'http://localhost:5000/api/emp/level';
 
 router.get('/', function(req, res, next){
     request(url,function(err,res){
