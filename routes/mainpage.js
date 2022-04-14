@@ -21,9 +21,9 @@ app.use(express.urlencoded({extended : true}));
 
 
 
-const superAdminUrl = 'http://localhost:8000/superMain';
-const dutyAdminUrl = 'http://localhost:8000/dutyMain';
-const normalUrl = 'http://localhost:8000/normalMain';
+const superAdminUrl = 'http://localhost:5000/superMain';
+const dutyAdminUrl = 'http://localhost:5000/dutyMain';
+const normalUrl = 'http://localhost:5000/normalMain';
 
 
 router.get('/superadm', function(req, res, next){
@@ -55,7 +55,7 @@ router.get('/superadm', function(req, res, next){
 
 
 router.get('/empManage', function(req, res, next){
-  request("https://dutyapi.azurewebsites.net/api/emp/total", function(error, response, body){
+  request("http://localhost:5000/api/emp/total", function(error, response, body){
     if(error){
       console.log(error)
     }
