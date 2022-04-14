@@ -59,7 +59,7 @@ router.get('/superadm', function(req, res, next){
 
 
 router.get('/empManage', function(req, res, next){
-  request("https://dutyapi-dutyapi-test.azurewebsites.net/api/emp/total", function(error, response, body){
+  request("https://dutyapi.azurewebsites.net/api/emp/total", function(error, response, body){
     if(error){
       console.log(error)
     }

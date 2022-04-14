@@ -27,7 +27,7 @@ app.use(express.urlencoded({extended : true}));
 // })
 // })
 
-var logoutUrl = "http://localhost:5000/logout"
+var logoutUrl = "https://dutyapi.azurewebsites.net/logout"
 
 router.get('/logout', function(req, res, next){
   request(logoutUrl,function(err,res){
