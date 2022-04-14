@@ -80,3 +80,5 @@ $(document).ready(function(){
 // onblur="'+ $(this).text() + ' = removeSpaces(' + $(this).text() + ');"
 //			$(this).html('<input type="text" class="form-control" onblur="'+ $(this).text() + ' = removeSpaces(' + $(this).text() + ');">');
 // $(this).html('<input type="text" class="form-control" onblur="'+ $(this).text() + ' = removeSpaces(' + $(this).text() + ');">');
+
+

@@ -4,6 +4,7 @@ const app = express();
 const request = require('request');
 const router = express.Router();
 var session=require('express-session');
+const {connection} = require("../config/dao.js");
 
   /**
  * 파일 명 : superMain.js
@@ -90,6 +91,7 @@ router.get('/dutyadm', function(req, res, next){
     });
 });
 
+
 router.get('/normal', function(req, res, next){
     request(normalUrl,function(err,res){
     });
@@ -100,6 +102,27 @@ router.get('/normal', function(req, res, next){
       empNo: req.session.empNo
     });
 });
+
+
+// select month, date, empno, shiftCode from currentdutytest where date= ? and shiftCode='/';
+// => 당일 오프자
+
+// select month, date, empno, shiftCode from currentdutytest where date=? and
+// shiftCode=(select shiftCode from currentdutytest where empno=? and date=?) and empno not in (?);
+// => 사번 공동근무자
+
+
+// router.get("/", function (req, res){
+// 	var todayOff = "select empNo, shiftCode from currentdutytest where date= ? and shiftCode='/'";
+// 	var myDate = req.body.date
+  
+// 	connection.query(todayOff, myDate, function(err, result){
+// 	  for (var data of result){
+// 		console.log(data)
+// 	  }
+// 	})
+//   });
+
 
 
 module.exports = router;

@@ -62,6 +62,9 @@ app.use('/', normalMain);
 var empManage = require('./routes/mainpage.js');
 app.use('/', empManage);
 
+var wanted = require('./routes/wanted.js');
+app.use('/', wanted);
+
 // var nightTurn = require('./routes/nightTurn.js');
 // app.use('/', nightTurn);
 
