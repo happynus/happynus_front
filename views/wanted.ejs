@@ -14,12 +14,6 @@
 <body>
 
 
-<% if (isLogined!=true) {%>
-  <script>alert('로그인 후 이용하세요.');location.href='/';</script>
-  <% } else { %> 
-</div><nav class="main-menu">
-
-
   
     <div>
        <a class="logo" href="">
@@ -42,7 +36,7 @@
    <li>                                 
    <a href="#">
    <i class="fa fa-user fa-lg"></i>
-   <span class="nav-text"> 이름 </span>
+   <span class="nav-text"> <%=empName %> </span>
    </a>
    </li>   
    
@@ -87,7 +81,13 @@
            
 
               <h1>원티드!!</h1> 
-     
-              <% } %>
+
+              <form action="http://localhost:5000/wanted" method="post">
+                <input type="text" placeholder="날짜" name="date"/>
+                <input type="text" placeholder="시프트" name="shiftCode"/>
+                <button type="submit">전송</button>
+              </form>
+
+
 </body>
 </html>

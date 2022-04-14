@@ -4,6 +4,7 @@ const app = express();
 const request = require('request');
 const router = express.Router();
 var session=require('express-session');
+const {connection} = require("../config/dao.js");
 
   /**
  * 파일 명 : superMain.js
@@ -24,6 +25,9 @@ app.use(express.urlencoded({extended : true}));
 const superAdminUrl = 'http://localhost:5000/superMain';
 const dutyAdminUrl = 'http://localhost:5000/dutyMain';
 const normalUrl = 'http://localhost:5000/normalMain';
+const normalMainDutyCheck = 'http://localhost:5000/normalMainDutyCheck';
+const teamDutyAdmin = 'http://localhost:5000/teamDutyAdmin';
+const teamDutyCheck = 'http://localhost:5000/teamDutyCheck';
 
 
 router.get('/superadm', function(req, res, next){
@@ -55,7 +59,7 @@ router.get('/superadm', function(req, res, next){
 
 
 router.get('/empManage', function(req, res, next){
-  request("http://localhost:5000/api/emp/total", function(error, response, body){
+  request("https://dutyapi-dutyapi-test.azurewebsites.net/api/emp/total", function(error, response, body){
     if(error){
       console.log(error)
     }
@@ -90,6 +94,29 @@ router.get('/dutyadm', function(req, res, next){
     });
 });
 
+
+router.get('/teamDutyAd', function(req, res, next){
+  request(teamDutyAdmin,function(err,res){
+  });
+  res.render('teamDutyAdmin',{
+    isLogined: true, 
+    empName: req.session.empName, 
+    authCode: req.session.authCode,
+    empNo: req.session.empNo
+  });
+});
+
+router.get('/teamDutyCK', function(req, res, next){
+  request(teamDutyCheck,function(err,res){
+  });
+  res.render('teamDutyCheck',{
+    isLogined: true, 
+    empName: req.session.empName, 
+    authCode: req.session.authCode,
+    empNo: req.session.empNo
+  });
+});
+
 router.get('/normal', function(req, res, next){
     request(normalUrl,function(err,res){
     });
@@ -100,6 +127,38 @@ router.get('/normal', function(req, res, next){
       empNo: req.session.empNo
     });
 });
+
+router.get('/normalDutyCK', function(req, res, next){
+  request(normalMainDutyCheck,function(err,res){
+  });
+  res.render('normalMainDutyCK',{
+    isLogined: true, 
+    empName: req.session.empName, 
+    authCode: req.session.authCode,
+    empNo: req.session.empNo
+  });
+});
+
+
+// select month, date, empno, shiftCode from currentdutytest where date= ? and shiftCode='/';
+// => 당일 오프자
+
+// select month, date, empno, shiftCode from currentdutytest where date=? and
+// shiftCode=(select shiftCode from currentdutytest where empno=? and date=?) and empno not in (?);
+// => 사번 공동근무자
+
+
+// router.get("/", function (req, res){
+// 	var todayOff = "select empNo, shiftCode from currentdutytest where date= ? and shiftCode='/'";
+// 	var myDate = req.body.date
+  
+// 	connection.query(todayOff, myDate, function(err, result){
+// 	  for (var data of result){
+// 		console.log(data)
+// 	  }
+// 	})
+//   });
+
 
 
 module.exports = router;
