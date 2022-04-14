@@ -56,6 +56,9 @@ app.use('/', superMain);
 var dutyMain = require('./routes/mainpage.js');
 app.use('/', dutyMain);
 
+var teamDutyAdmin = require('./routes/mainpage.js');
+app.use('/', teamDutyAdmin);
+
 var normalMain = require('./routes/mainpage.js');
 app.use('/', normalMain);
 
