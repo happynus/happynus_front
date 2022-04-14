@@ -59,8 +59,14 @@ app.use('/', dutyMain);
 var teamDutyAdmin = require('./routes/mainpage.js');
 app.use('/', teamDutyAdmin);
 
+var teamDutyCheck = require('./routes/mainpage.js');
+app.use('/', teamDutyCheck);
+
 var normalMain = require('./routes/mainpage.js');
 app.use('/', normalMain);
+
+var normalMainDutyCK = require('./routes/mainpage.js');
+app.use('/', normalMainDutyCK);
 
 var empManage = require('./routes/mainpage.js');
 app.use('/', empManage);
@@ -70,8 +76,6 @@ app.use('/', empManage);
 
 // var wanted = require('./routes/login.js');
 // app.use('/', wanted);
-
-
 
 // var finalAssign = require('./routes/finalAssign.js');
 // app.use('/', finalAssign);
