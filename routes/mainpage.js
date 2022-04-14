@@ -24,6 +24,7 @@ app.use(express.urlencoded({extended : true}));
 const superAdminUrl = 'http://localhost:5000/superMain';
 const dutyAdminUrl = 'http://localhost:5000/dutyMain';
 const normalUrl = 'http://localhost:5000/normalMain';
+const teamDutyAdmin = 'http://localhost:5000/teamDutyAdmin';
 
 
 router.get('/superadm', function(req, res, next){
@@ -88,6 +89,17 @@ router.get('/dutyadm', function(req, res, next){
       authCode: req.session.authCode,
       empNo: req.session.empNo
     });
+});
+
+router.get('/teamDutyAd', function(req, res, next){
+  request(teamDutyAdmin,function(err,res){
+  });
+  res.render('teamDutyAdmin',{
+    isLogined: true, 
+    empName: req.session.empName, 
+    authCode: req.session.authCode,
+    empNo: req.session.empNo
+  });
 });
 
 router.get('/normal', function(req, res, next){
