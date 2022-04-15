@@ -10,6 +10,11 @@
     <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/654444f29f.js" crossorigin="anonymous"></script>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/calendar.css">
+    <script src="./js/calendar.js"></script>   
+
 </head>
 <body>
 
@@ -84,5 +89,181 @@
            </nav>
 
      
+
+           <script>
+            // fill the month table with column headings
+          function day_title(day_name) {
+              document.write("<div class='c-cal__col'>" + day_name + "</div>");
+            }
+            // fills the month table with numbers
+          function fill_table(month, month_length, indexMonth) {
+              day = 1;
+              // begin the new month table
+              document.write("<div class='c-main c-main-" + indexMonth + "'>");
+              //document.write("<b>"+month+" "+year+"</b>")
+          
+              // column headings
+              document.write("<div class='c-cal__row'>");
+              day_title("일");
+              day_title("월");
+              day_title("화");
+              day_title("수");
+              day_title("목");
+              day_title("금");
+              day_title("토");
+              document.write("</div>");
+          
+              // pad cells before first day of month
+              document.write("<div class='c-cal__row'>");
+              for (var i = 1; i < start_day; i++) {
+                if (start_day > 7) {
+                } else {
+                  document.write("<div class='c-cal__cel'></div>");
+                }
+              }
+          
+              // fill the first week of days
+              for (var i = start_day; i < 8; i++) {
+                document.write(
+                  "<div data-day='2017-" +
+                    indexMonth +
+                    "-0" +
+                    day +
+                    "'class='c-cal__cel'><p>" +
+                    day +
+                    "</p></div>"
+                );
+                day++;
+              }
+              document.write("</div>");
+          
+              // fill the remaining weeks
+              while (day <= month_length) {
+                document.write("<div class='c-cal__row'>");
+                for (var i = 1; i <= 7 && day <= month_length; i++) {
+                  if (day >= 1 && day <= 9) {
+                    document.write(
+                      "<div data-day='2017-" +
+                        indexMonth +
+                        "-0" +
+                        day +
+                        "'class='c-cal__cel'><p>" +
+                        day +
+                        "</p></div>"
+                    );
+                    day++;
+                  } else {
+                    document.write(
+                      "<div data-day='2017-" +
+                        indexMonth +
+                        "-" +
+                        day +
+                        "' class='c-cal__cel'><p>" +
+                        day +
+                        "</p></div>"
+                    );
+                    day++;
+                  }
+                }
+                document.write("</div>");
+                // the first day of the next month
+                start_day = i;
+              }
+          
+              document.write("</div>");
+            }
+          </script>
+          <header>
+            <div class="wrapper">
+              <div class="c-monthyear">
+              <div class="c-month">
+                  <span id="prev" class="prev fa fa-angle-left" aria-hidden="true"></span>
+                  <div id="c-paginator">
+                    <!-- <span class="c-paginator__month">1월</span>
+                    <span class="c-paginator__month">2월</span>
+                    <span class="c-paginator__month">3월</span>
+                    <span class="c-paginator__month">4월</span> -->
+                    <span class="c-paginator__month">5월</span>
+                    <!-- <span class="c-paginator__month">6월</span>
+                    <span class="c-paginator__month">7월</span>
+                    <span class="c-paginator__month">8월</span>
+                    <span class="c-paginator__month">9월</span>
+                    <span class="c-paginator__month">10월</span>
+                    <span class="c-paginator__month">11월</span>
+                    <span class="c-paginator__month">12월</span> -->
+                  </div>
+                  <span id="next" class="next fa fa-angle-right" aria-hidden="true"></span>
+                </div>
+                <span class="c-paginator__year">2022</span>
+              </div>
+
+              <h2>오늘 내 듀티</h2>
+              <div class="c-sort">
+                <a class="o-btn c-today__btn" href="javascript:;">오늘</a>
+              </div>
+            </div>
+          </header>
+          <div class="wrapper" style="width: 800px;">
+            <div class="c-calendar">
+              <div class="c-calendar__style c-aside">
+                <a class="c-add o-btn js-event__add" href="javascript:;">메모 추가+</a>
+
+                <h3>오프 근무자</h3>
+
+                <% for(let i=0; i<coworker.length; i++){%>
+                 [사번] <%=coworker[i].empNo%> <br> [이름] <%=coworker[i].empName%>
+                  <%}%>
+
+                <div class="c-aside__day">
+                  <span class="c-aside__num"></span> <span class="c-aside__month"></span>
+                </div>
+                <div class="c-aside__eventList">
+                </div>
+              </div>
+              <div class="c-cal__container c-calendar__style">
+                <script>
+                
+                // CAHNGE the below variable to the CURRENT YEAR
+                year = 2022;
+          
+                // first day of the week of the new year
+                today = new Date("1월 1, " + year);
+                start_day = today.getDay() + 1;
+                fill_table("1월", 31, "01");
+                fill_table("2월", 28, "02");
+                fill_table("3월", 31, "03");
+                fill_table("4월", 30, "04");
+                fill_table("5월", 31, "05");
+                fill_table("6월", 30, "06");
+                fill_table("7월", 31, "07");
+                fill_table("8월", 31, "08");
+                fill_table("9월", 30, "09");
+                fill_table("10월", 31, "10");
+                fill_table("11월", 30, "11");
+                fill_table("12월", 31, "12");
+                </script>
+              </div>
+            </div>
+          
+            <div class="c-event__creator c-calendar__style js-event__creator">
+              <a href="javascript:;" class="o-btn js-event__close">닫기 <span class="fa fa-close"></span></a>
+              <form id="addEvent">
+                <input placeholder="Event name" type="text" name="name">
+                <input type="date" name="date">
+                <textarea placeholder="Notes" name="notes" cols="30" rows="10"></textarea>
+                <select name="tags">
+                    <option value="event">event</option>
+                    <option value="important">important</option>
+                    <option value="birthday">birthday</option>
+                    <option value="festivity">festivity</option>
+                  </select>
+              </form>
+              <br>
+              <a href="javascript:;" class="o-btn js-event__save">SAVE <span class="fa fa-save"></span></a>
+            </div>
+          </div>
+
+
+
 </body>
 </html>

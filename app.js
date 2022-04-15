@@ -77,8 +77,6 @@ app.use('/', wanted);
 // var nightTurn = require('./routes/nightTurn.js');
 // app.use('/', nightTurn);
 
-// var wanted = require('./routes/login.js');
-// app.use('/', wanted);
 
 // var finalAssign = require('./routes/finalAssign.js');
 // app.use('/', finalAssign);

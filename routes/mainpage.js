@@ -28,7 +28,7 @@ const normalUrl = 'http://localhost:5000/normalMain';
 const normalMainDutyCheck = 'http://localhost:5000/normalMainDutyCheck';
 const teamDutyAdmin = 'http://localhost:5000/teamDutyAdmin';
 const teamDutyCheck = 'http://localhost:5000/teamDutyCheck';
-
+const checkCoworker = "https://dutyapi.azurewebsites.net/api/emp/coworkers"
 
 router.get('/superadm', function(req, res, next){
       res.render('superMain', {
@@ -38,24 +38,6 @@ router.get('/superadm', function(req, res, next){
     empNo: req.session.empNo
   });
   });
-
-
-// router.get('/empManage', function(req, res, next){
-//   request("https://dutyapi.azurewebsites.net/api/emp/total", function(error, response, body){
-//     if(error){
-//       console.log(error)
-//     }
-//     var obj = JSON.parse(body)
-//       res.render('empManage', {
-//     emps:obj,
-//     isLogined: true, 
-//     empName: req.session.empName, 
-//     authCode: req.session.authCode,
-//     empNo: req.session.empNo
-//   })
-//   })
-
-// })
 
 
 router.get('/empManage', function(req, res, next){
@@ -74,13 +56,6 @@ router.get('/empManage', function(req, res, next){
   })
 
 })
-
-
-// router.get('/', function(req, res, next) {
-//     request(superAdminUrl, function(err,res){
-//       { withCredentials: true }
-//     });res.render('superMain');
-//   });
 
 
 router.get('/dutyadm', function(req, res, next){
@@ -118,15 +93,21 @@ router.get('/teamDutyCK', function(req, res, next){
 });
 
 router.get('/normal', function(req, res, next){
-    request(normalUrl,function(err,res){
-    });
-    res.render('normalMain',{
-      isLogined: true, 
-      empName: req.session.empName, 
-      authCode: req.session.authCode,
-      empNo: req.session.empNo
+    request(checkCoworker,function(err,response, body){
+      if (err) throw err;
+      var obj = body
+      console.log("바디",body)
+      res.render('normalMain',{
+        coworker: obj,
+        isLogined: true, 
+        empNo: req.session.empNo,
+        empName: req.session.empName
+      });
     });
 });
+
+
+
 
 router.get('/normalDutyCK', function(req, res, next){
   request(normalMainDutyCheck,function(err,res){
@@ -139,25 +120,6 @@ router.get('/normalDutyCK', function(req, res, next){
   });
 });
 
-
-// select month, date, empno, shiftCode from currentdutytest where date= ? and shiftCode='/';
-// => 당일 오프자
-
-// select month, date, empno, shiftCode from currentdutytest where date=? and
-// shiftCode=(select shiftCode from currentdutytest where empno=? and date=?) and empno not in (?);
-// => 사번 공동근무자
-
-
-// router.get("/", function (req, res){
-// 	var todayOff = "select empNo, shiftCode from currentdutytest where date= ? and shiftCode='/'";
-// 	var myDate = req.body.date
-  
-// 	connection.query(todayOff, myDate, function(err, result){
-// 	  for (var data of result){
-// 		console.log(data)
-// 	  }
-// 	})
-//   });
 
 
 
