@@ -31,4 +31,30 @@ app.get("/shiftTable", function (req, res) {
   });
 });
 
+app.get("/shiftTableCk", function (req, res) {
+  const shiftTableCkUrl = "http://localhost:5000/shiftTableCk";
+  request(shiftTableCkUrl, { json: true }, function (err, result, body) {
+    if (err) {
+      console.log("실패");
+    } else {
+      //console.log(body);
+      //res.send(body);
+      res.render("shiftTableCk", { emplist: body });
+    }
+  });
+});
+
+app.get("/myDutyTable", function (req, res) {
+  const shiftTableCkUrl = "http://localhost:5000/myDutyTable";
+  request(shiftTableCkUrl, { json: true }, function (err, result, body) {
+    if (err) {
+      console.log("실패");
+    } else {
+      //console.log(body);
+      //res.send(body);
+      res.render("myDutyTable", { emplist: body });
+    }
+  });
+});
+
 module.exports = app;
