@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/shiftTable", function (req, res) {
-  const shiftTableUrl = "http://localhost:5000/shiftTable";
+  const shiftTableUrl = "https://dutyapi.azurewebsites.net/shiftTable";
   request(shiftTableUrl, { json: true }, function (err, result, body) {
     if (err) {
       console.log("실패");
