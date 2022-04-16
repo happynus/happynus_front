@@ -74,6 +74,9 @@ app.use("/", wanted);
 var shiftTable = require("./routes/shiftTable.js");
 app.use("/", shiftTable);
 
+// var myWantedTable = require("./routes/shiftTable.js");
+// app.use("/", myWantedTable);
+
 // var nightTurn = require('./routes/nightTurn.js');
 // app.use('/', nightTurn);
 

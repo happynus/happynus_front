@@ -18,13 +18,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const superAdminUrl = "http://localhost:5000/superMain";
-const dutyAdminUrl = "http://localhost:5000/dutyMain";
-const normalUrl = "http://localhost:5000/normalMain";
 const normalMainDutyCheck = "http://localhost:5000/normalMainDutyCheck";
-const teamDutyAdmin = "http://localhost:5000/teamDutyAdmin";
-const teamDutyCheck = "http://localhost:5000/teamDutyCheck";
-const checkCoworker = "https://dutyapi.azurewebsites.net/api/emp/coworkers";
+const teamDutyCheck ="http://localhost:5000/teamDutyCheck"
+//const checkCoworker = "https://dutyapi.azurewebsites.net/api/emp/coworkers";
 
 router.get("/superadm", function (req, res, next) {
   res.render("superMain", {
@@ -55,7 +51,6 @@ router.get("/empManage", function (req, res, next) {
 });
 
 router.get("/dutyadm", function (req, res, next) {
-  request(dutyAdminUrl, function (err, res) {});
   res.render("dutyMain", {
     isLogined: true,
     empName: req.session.empName,
@@ -65,8 +60,7 @@ router.get("/dutyadm", function (req, res, next) {
 });
 
 router.get("/teamDutyAd", function (req, res, next) {
-  request(teamDutyAdmin, function (err, res) {});
-  res.render("teamDutyAdmin", {
+  res.render("teamDutyCheck", {
     isLogined: true,
     empName: req.session.empName,
     authCode: req.session.authCode,
@@ -81,20 +75,31 @@ router.get("/teamDutyCK", function (req, res, next) {
     empName: req.session.empName,
     authCode: req.session.authCode,
     empNo: req.session.empNo,
+    teamNo: req.session.teamNo
   });
 });
 
+// router.get("/normal", function (req, res, next) {
+//   request(checkCoworker, function (err, response, body) {
+//     if (err) throw err;
+//     var obj = body;
+//     console.log("바디", body);
+//     res.render("normalMain", {
+//       coworker: obj,
+//       isLogined: true,
+//       empNo: req.session.empNo,
+//       empName: req.session.empName,
+//     });
+//   });
+// });
+
+
 router.get("/normal", function (req, res, next) {
-  request(checkCoworker, function (err, response, body) {
-    if (err) throw err;
-    var obj = body;
-    console.log("바디", body);
-    res.render("normalMain", {
-      coworker: obj,
-      isLogined: true,
-      empNo: req.session.empNo,
-      empName: req.session.empName,
-    });
+  res.render("normalMain", {
+    isLogined: true,
+    empName: req.session.empName,
+    authCode: req.session.authCode,
+    empNo: req.session.empNo,
   });
 });
 

@@ -117,30 +117,41 @@
 
           <div id="sendWanted" style="padding-left: 650px;">
 <input type="date" name="wantedDate" min="2022-05-01" max="2022-05-30">
-            <% if (statRule == '00100') {%>
-            <select>
-                <option name="shiftCode" value="">오프 유형 선택</option>
-                <option  name="shiftCode"  value="yo">연차</option>
-                <option name="shiftCode"  value="mo">월차</option>
-                <option name="shiftCode"  value="ca">생리휴가</option>
+            <% if (statRule == '00100' || statRule == '10100') {%>
+            <select name="wantedShift">
+                <option value="">유형 선택</option>
+                <option value="yo">연차</option>
+                <option  value="mo">월차</option>
+                <option  value="ca">생리휴가</option>
             </select>
-            <% } else if (statRule == '00000'){%>
-                <select>
-                    <option  name="shiftCode" value="">신청근무 선택</option>
-                    <option name="shiftCode"  value="D">데이</option>
-                    <option  name="shiftCode" value="E">이브닝</option>
-                    <option  name="shiftCode" value="/">오프</option>
-                    <option  name="shiftCode" value="ho">공휴오프</option>
-                    <option  name="shiftCode" value="yo">연차</option>
-                    <option name="shiftCode"  value="mo">월차</option>
-                    <option  name="shiftCode" value="ca">생리휴가</option>
+            <% } else if (statRule == '00000' || statRule == '00010'){%>
+                <select name="wantedShift">
+                    <option  value="">유형 선택</option>
+                    <option  value="D">데이</option>
+                    <option  value="E">이브닝</option>
+                    <option  value="/">일반오프</option>
+                    <option  value="ho">공휴오프</option>
+                    <option  value="yo">연차</option>
+                    <option  value="mo">월차</option>
+                    <option  value="ca">생리휴가</option>
                 </select>
-                <% } %>
+                <% } else if(statRule == '01000') { %>
+                    <option  value="/">일반오프</option>
+                    <option  value="ho">공휴오프</option>
+                    <option  value="yo">연차</option>
+                    <option  value="mo">월차</option>
+                    <option  value="ca">생리휴가</option>
+                    <% } else if (statRule == '00001') { %>
+                        <script>
+                            alert('신규교육대상자는 원티드 신청을 할 수 없습니다!')
+                            document.location.href="/normal"
+                            </script>
+                        <%}%>
             <button type="submit">신청</button>
   </div>
 </form>
 
-          
+
 
 
 

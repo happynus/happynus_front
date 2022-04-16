@@ -19,17 +19,19 @@ app.use(express.json());
 app.use(express.urlencoded({extended : true}));
 
 
-router.get('/wanted', function(req, res, next){
-    res.render('wanted', {
-    isLogined: true, 
-    empName: req.session.empName, 
+router.get('/wanted', function (req, res, next) {
+  res.render('wanted', {
+    isLogined: true,
+    empName: req.session.empName,
     authCode: req.session.authCode,
     empNo: req.session.empNo,
     teamNo: req.session.teamNo,
     deptNo: req.session.deptNo,
     statRule: req.session.statRule
   })
-  })
+})
+
+
 
 
 module.exports = router;
