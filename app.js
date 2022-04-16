@@ -1,87 +1,85 @@
-const express = require('express');
-const morgan = require('morgan');
-const path = require('path');
+const express = require("express");
+const morgan = require("morgan");
+const path = require("path");
 const app = express();
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 //var cookieParser = require('cookie-parser');
-var session=require('express-session');
-var MySQLStore = require('express-mysql-session')(session);
+var session = require("express-session");
+var MySQLStore = require("express-mysql-session")(session);
 
+app.set("view engine", "ejs");
+app.set("port", process.env.PORT || 3000);
 
-app.set('view engine', 'ejs');
-app.set('port', process.env.PORT || 3000);
-
-
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(cookieParser());
-app.use(express.urlencoded({extended : false}));
+app.use(express.urlencoded({ extended: false }));
 
-app.set('views', './views');
-app.engine('html', require('ejs').renderFile);
-app.use(express.static(path.join(__dirname+ '/public')));
+app.set("views", "./views");
+app.engine("html", require("ejs").renderFile);
+app.use(express.static(path.join(__dirname + "/public")));
 
-
-  // 세션 설정
-  app.use(session({
-	key: 'hnduty',
-	secret: 'nextlevel',
-	resave:false,
-	saveUninitialized:false,
-	store: new MySQLStore({
-		host: 'mysql-hnduty.mysql.database.azure.com',
-		port:'3306',
-		user: 'hnadmin',
-		password: 'hn!753159',
-		database: 'session'
-	})
-  }));
-
-
+// 세션 설정
+app.use(
+  session({
+    key: "hnduty",
+    secret: "nextlevel",
+    resave: false,
+    saveUninitialized: false,
+    store: new MySQLStore({
+      host: "mysql-hnduty.mysql.database.azure.com",
+      port: "3306",
+      user: "hnadmin",
+      password: "hn!753159",
+      database: "session",
+    }),
+  })
+);
 
 //Route_zone
-var level = require('./routes/level.js');
-app.use('/level', level);
+var level = require("./routes/level.js");
+app.use("/level", level);
 
-var login = require('./routes/login.js');
-app.use('/', login);
+var login = require("./routes/login.js");
+app.use("/", login);
 
-var logout = require('./routes/logout.js');
-app.use('/', logout);
+var logout = require("./routes/logout.js");
+app.use("/", logout);
 
-var superMain = require('./routes/mainpage.js');
-app.use('/', superMain);
+var superMain = require("./routes/mainpage.js");
+app.use("/", superMain);
 
-var dutyMain = require('./routes/mainpage.js');
-app.use('/', dutyMain);
+var dutyMain = require("./routes/mainpage.js");
+app.use("/", dutyMain);
 
-var teamDutyAdmin = require('./routes/mainpage.js');
-app.use('/', teamDutyAdmin);
+var teamDutyAdmin = require("./routes/mainpage.js");
+app.use("/", teamDutyAdmin);
 
-var teamDutyCheck = require('./routes/mainpage.js');
-app.use('/', teamDutyCheck);
+var teamDutyCheck = require("./routes/mainpage.js");
+app.use("/", teamDutyCheck);
 
-var normalMain = require('./routes/mainpage.js');
-app.use('/', normalMain);
+var normalMain = require("./routes/mainpage.js");
+app.use("/", normalMain);
 
-var normalMainDutyCK = require('./routes/mainpage.js');
-app.use('/', normalMainDutyCK);
+var normalMainDutyCK = require("./routes/mainpage.js");
+app.use("/", normalMainDutyCK);
 
-var empManage = require('./routes/mainpage.js');
-app.use('/', empManage);
+var empManage = require("./routes/mainpage.js");
+app.use("/", empManage);
 
-var wanted = require('./routes/wanted.js');
-app.use('/', wanted);
+var wanted = require("./routes/wanted.js");
+app.use("/", wanted);
+
+var shiftTable = require("./routes/shiftTable.js");
+app.use("/", shiftTable);
 
 // var nightTurn = require('./routes/nightTurn.js');
 // app.use('/', nightTurn);
 
-
 // var finalAssign = require('./routes/finalAssign.js');
 // app.use('/', finalAssign);
 
-app.listen(app.get('port'), () => {
-	console.log('프론트 서버 시작!')
+app.listen(app.get("port"), () => {
+  console.log("프론트 서버 시작!");
 });
-
