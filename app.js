@@ -47,41 +47,20 @@ app.use("/", login);
 var logout = require("./routes/logout.js");
 app.use("/", logout);
 
-var superMain = require("./routes/mainpage.js");
-app.use("/", superMain);
+//여러가지 MainPage들을 모아논 API
+var mainpage = require("./routes/mainpage.js");
+app.use("/", mainpage);
 
-var dutyMain = require("./routes/mainpage.js");
-app.use("/", dutyMain);
-
-var teamDutyAdmin = require("./routes/mainpage.js");
-app.use("/", teamDutyAdmin);
-
-var teamDutyCheck = require("./routes/mainpage.js");
-app.use("/", teamDutyCheck);
-
-var normalMain = require("./routes/mainpage.js");
-app.use("/", normalMain);
-
-var normalMainDutyCK = require("./routes/mainpage.js");
-app.use("/", normalMainDutyCK);
-
-var empManage = require("./routes/mainpage.js");
-app.use("/", empManage);
+// var normalMain = require("./routes/mainpage.js");
+// app.use("/", normalMain);
 
 var wanted = require("./routes/wanted.js");
 app.use("/", wanted);
 
+
+//여러 버전의 시프트 테이블 모아놓은 곳
 var shiftTable = require("./routes/shiftTable.js");
 app.use("/", shiftTable);
-
-// var myWantedTable = require("./routes/shiftTable.js");
-// app.use("/", myWantedTable);
-
-// var nightTurn = require('./routes/nightTurn.js');
-// app.use('/', nightTurn);
-
-// var finalAssign = require('./routes/finalAssign.js');
-// app.use('/', finalAssign);
 
 app.listen(app.get("port"), () => {
   console.log("프론트 서버 시작!");

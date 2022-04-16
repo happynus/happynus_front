@@ -44,9 +44,9 @@
       
    <li>                                   
     <%if (authCode == '001'){%>
-      <a href="/normal">
+      <a href="/normalMain">
         <%} else if (010){%>
-          <a href="/dutyadm">
+          <a href="/dutyMain">
           <% } %>
    <i class="fa fa-home fa-lg"></i>
    <span class="nav-text">메인페이지</span>
@@ -54,7 +54,7 @@
    </li>   
        
    <li class="darkerlishadow">
-    <a href="/normalDutyCK">
+    <a href="/normalMainDutyCK">
     <i class="fa fa-table"></i>
     <span class="nav-text">우리팀 듀티 확인</span>
     </a>
@@ -62,9 +62,9 @@
       
     <li class="darkerlishadow">
       <%if (authCode == '001'){%>
-    <a href="/normal">
+    <a href="/normalMainDutyCK">
       <%} else if (010){%>
-        <a href="/dutyadm">
+        <a href="/teamMainCheck">
         <% } %>
     <i class="fa fa-flag-checkered"></i>
     <span class="nav-text">내 듀티 확인</span>

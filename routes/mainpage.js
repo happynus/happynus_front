@@ -18,11 +18,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const superMainUrl = "http://localhost:5000/superMain";
+const dutyAdminUrl = "http://localhost:5000/dutyMain";
+const normalUrl = "http://localhost:5000/normalMain";
 const normalMainDutyCheck = "http://localhost:5000/normalMainDutyCheck";
 const teamDutyCheck ="http://localhost:5000/teamDutyCheck"
 //const checkCoworker = "https://dutyapi.azurewebsites.net/api/emp/coworkers";
 
-router.get("/superadm", function (req, res, next) {
+
+// 슈퍼관리자 권한 페이지
+router.get("/superMain", function (req, res, next) {
   res.render("superMain", {
     isLogined: true,
     empName: req.session.empName,
@@ -50,7 +55,10 @@ router.get("/empManage", function (req, res, next) {
   );
 });
 
-router.get("/dutyadm", function (req, res, next) {
+
+// 듀티관리자 권한 페이지
+router.get("/dutyMain", function (req, res, next) {
+  //request(dutyAdminUrl, function (err, res) {});
   res.render("dutyMain", {
     isLogined: true,
     empName: req.session.empName,
@@ -59,8 +67,9 @@ router.get("/dutyadm", function (req, res, next) {
   });
 });
 
-router.get("/teamDutyAd", function (req, res, next) {
-  res.render("teamDutyCheck", {
+router.get("/teamDutyAdmin", function (req, res, next) {
+  //request(teamDutyAdmin, function (err, res) {});
+  res.render("teamDutyAdmin", {
     isLogined: true,
     empName: req.session.empName,
     authCode: req.session.authCode,
@@ -68,8 +77,8 @@ router.get("/teamDutyAd", function (req, res, next) {
   });
 });
 
-router.get("/teamDutyCK", function (req, res, next) {
-  request(teamDutyCheck, function (err, res) {});
+router.get("/teamDutyCheck", function (req, res, next) {
+  //request(teamDutyCheck, function (err, res) {});
   res.render("teamDutyCheck", {
     isLogined: true,
     empName: req.session.empName,
@@ -79,32 +88,24 @@ router.get("/teamDutyCK", function (req, res, next) {
   });
 });
 
-// router.get("/normal", function (req, res, next) {
-//   request(checkCoworker, function (err, response, body) {
-//     if (err) throw err;
-//     var obj = body;
-//     console.log("바디", body);
-//     res.render("normalMain", {
-//       coworker: obj,
-//       isLogined: true,
-//       empNo: req.session.empNo,
-//       empName: req.session.empName,
-//     });
-//   });
-// });
 
-
-router.get("/normal", function (req, res, next) {
-  res.render("normalMain", {
-    isLogined: true,
-    empName: req.session.empName,
-    authCode: req.session.authCode,
-    empNo: req.session.empNo,
+// 일반근무자 권한 페이지
+router.get("/normalMain", function (req, res, next) {
+  request(checkCoworker, function (err, response, body) {
+    if (err) throw err;
+    var obj = body;
+    console.log("바디", body);
+    res.render("normalMain", {
+      coworker: obj,
+      isLogined: true,
+      empNo: req.session.empNo,
+      empName: req.session.empName,
+    });
   });
 });
 
-router.get("/normalDutyCK", function (req, res, next) {
-  request(normalMainDutyCheck, function (err, res) {});
+router.get("/normalMainDutyCK", function (req, res, next) {
+  //request(normalMainDutyCheck, function (err, res) {});
   res.render("normalMainDutyCK", {
     isLogined: true,
     empName: req.session.empName,
