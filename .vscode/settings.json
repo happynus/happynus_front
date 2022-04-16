@@ -2,5 +2,7 @@
     "appService.zipIgnorePattern": [
         "node_modules{,/**}",
         ".vscode{,/**}"
-    ]
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/2f1cfecc-e2b7-4fde-a004-fbeb197d4213/resourceGroups/rg-duty/providers/Microsoft.Web/sites/dutyweb",
+    "appService.deploySubpath": "."
 }

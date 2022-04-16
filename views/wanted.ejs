@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>해피너스 * 일반사용자</title>
-
-    
+    <title>해피너스 * 신청근무</title>
 
     <link rel="stylesheet" href="./css/superMain.css">
     <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/654444f29f.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-<link rel="stylesheet" href="./css/owl.carousel.min.css">
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="./css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" href="./css/owl.carousel.min.css">
+<link rel="stylesheet" href="./css/cal.css">
 
 </head>
 <body>
+
+
+
+</div><nav class="main-menu">
 
 
   
@@ -32,31 +35,31 @@
     <img src="img/logo.png" width="50" height="42", padding-bottom="20px",  padding-left="2px">
 
    <ul>
-     
-   <li>                                   
-   <a href="/superMain">
-   <i class="fa fa-home fa-lg"></i>
-   <span class="nav-text">메인페이지</span>
-   </a>
-   </li>   
+  
       
    <li>                                 
    <a href="#">
    <i class="fa fa-user fa-lg"></i>
-   <span class="nav-text"> <%=empName %> </span>
+   <span class="nav-text"> <%= empName %>님, 안녕하세요! </span>
    </a>
    </li>   
-   
+      
+   <li>                                   
+   <a href="/normal">
+   <i class="fa fa-home fa-lg"></i>
+   <span class="nav-text">메인페이지</span>
+   </a>
+   </li>   
        
    <li class="darkerlishadow">
-    <a href="#">
+    <a href="/normalDutyCK">
     <i class="fa fa-table"></i>
     <span class="nav-text">우리팀 듀티 확인</span>
     </a>
     </li>
       
     <li class="darkerlishadow">
-    <a href="#">
+    <a href="/normal">
     <i class="fa fa-flag-checkered"></i>
     <span class="nav-text">내 듀티 확인</span>
     </a>
@@ -85,15 +88,64 @@
    </li>
    </ul>
            </nav>
-           
 
-              <h1>원티드!!</h1> 
 
-              <form action="http://localhost:5000/wanted" method="post">
-                <input type="text" placeholder="날짜" name="date"/>
-                <input type="text" placeholder="시프트" name="shiftCode"/>
-                <button type="submit">전송</button>
-              </form>
+
+           <div class="sec_cal">
+            <h2 style="color: black;">원티드 근무를 신청하세요</h2>
+            <div class="cal_nav" style="color: black;">
+              <!-- <a href="javascript:;" class="nav-btn go-prev">이전</a> -->
+              <div class="year-month"></div><br>
+              <!-- <a href="javascript:;" class="nav-btn go-next">다음</a> -->
+            </div>
+            <br>
+            <div class="cal_wrap">
+              <div class="days">
+                <div class="day">월</div>
+                <div class="day">화</div>
+                <div class="day">수</div>
+                <div class="day">목</div>
+                <div class="day">금</div>
+                <div class="day">토</div>
+                <div class="day">일</div>
+              </div>
+              <div class="dates"></div>
+            </div>
+          </div>
+
+          <form action="http://localhost:5000/wanted" method="post">
+
+          <div id="sendWanted" style="padding-left: 650px;">
+<input type="date" name="wantedDate" min="2022-05-01" max="2022-05-30">
+            <% if (statRule == '00100') {%>
+            <select>
+                <option name="shiftCode" value="">오프 유형 선택</option>
+                <option  name="shiftCode"  value="yo">연차</option>
+                <option name="shiftCode"  value="mo">월차</option>
+                <option name="shiftCode"  value="ca">생리휴가</option>
+            </select>
+            <% } else if (statRule == '00000'){%>
+                <select>
+                    <option  name="shiftCode" value="">신청근무 선택</option>
+                    <option name="shiftCode"  value="D">데이</option>
+                    <option  name="shiftCode" value="E">이브닝</option>
+                    <option  name="shiftCode" value="/">오프</option>
+                    <option  name="shiftCode" value="ho">공휴오프</option>
+                    <option  name="shiftCode" value="yo">연차</option>
+                    <option name="shiftCode"  value="mo">월차</option>
+                    <option  name="shiftCode" value="ca">생리휴가</option>
+                </select>
+                <% } %>
+            <button type="submit">신청</button>
+  </div>
+</form>
+
+          
+
+
+
+        <script src="./js/cal.js"></script>
+
 
 
 </body>
