@@ -48,8 +48,8 @@ var logout = require("./routes/logout.js");
 app.use("/", logout);
 
 //여러가지 MainPage들을 모아논 API
-var mainpage = require("./routes/mainpage.js");
-app.use("/", mainpage);
+var mainPage = require("./routes/mainPage.js");
+app.use("/", mainPage);
 
 // var normalMain = require("./routes/mainpage.js");
 // app.use("/", normalMain);

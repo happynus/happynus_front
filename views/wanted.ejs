@@ -1,165 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>해피너스 * 신청근무</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>해피너스 * 신청근무</title>
 
-    <link rel="stylesheet" href="./css/superMain.css">
-    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/654444f29f.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./css/superMain.css">
+  <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/654444f29f.js" crossorigin="anonymous"></script>
 
 
-    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<link rel="stylesheet" href="./css/owl.carousel.min.css">
-<link rel="stylesheet" href="./css/cal.css">
+  <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+    rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <link rel="stylesheet" href="./css/owl.carousel.min.css">
+  <link rel="stylesheet" href="./css/cal.css">
 
 </head>
+
 <body>
 
 
 
-</div><nav class="main-menu">
-  
-    <div>
-       <a class="logo" href="">
-       </a> 
-     </div> 
-   <div class="settings"></div>
-   <div class="scrollbar" id="style-1">
-     
-    <img src="img/logo.png" width="50" height="42", padding-bottom="20px",  padding-left="2px">
-
-   <ul>
-  
-      
-   <li>                                 
-   <a href="#">
-   <i class="fa fa-user fa-lg"></i>
-   <span class="nav-text"> <%= empName %>님, 안녕하세요! </span>
-   </a>
-   </li>   
-      
-   <li>                                   
-    <%if (authCode == '001'){%>
-      <a href="/normalMain">
-        <%} else if (authCode == '010'){%>
-          <a href="/dutyMain">
-          <% } %>
-   <i class="fa fa-home fa-lg"></i>
-   <span class="nav-text">메인페이지</span>
-   </a>
-   </li>   
-       
-
-
-   <% if (authCode == '010'){%>
-   <li>                                 
-    <a href="/teamDutyAdmin">
-     <i class="fa fa-magic"></i>
-    <span class="nav-text">신규 듀티 작성</span>
-    </a>
-    </li>   
-    <% } %>
-
-
-
-    <li class="darkerlishadow">
-      <%if (authCode == '001'){%>
-    <a href="/normalMainDutyCK">
-
-    <%} else if (authCode == '010'){%>
-      <a href="/teamDutyCheck">
-      <% } %>
-      <i class="fa fa-flag-checkered"></i>
-      <span class="nav-text">우리팀 듀티 확인</span>
-      </a>
-    </li>
- 
-    <li class="darkerlishadow">
-     <a href="/wanted">
-     <i class="fa fa-calendar-plus-o"></i>
-     <span class="nav-text">신청근무 접수</span>
-     </a>
-     </li>
-     
-   </ul>
-
-       
-     
-   <ul class="logout">
-   <li>
-<a href="/logout">
-                            <i class="fa fa-sign-out"></i>
-                           <span class="nav-text">
-                               로그아웃 
-                           </span>
-                           
-                       </a>
-   </li>
-   </ul>
-           </nav>
-
-<br>
-<h2 style="padding-left: 520px; color: black;" > 현재 배치표를 확인 후 원티드 근무를 신청하세요</h2>
-           <div>
-            <iframe
-                name="targetURL"
-                class="iframe-preview center"
-                width="100%"
-                height="500"
-                style="border: none; margin-top: 10px;margin-left: 200px;width: 1180px;"
-                src="https://dutyweb.azurewebsites.net/shiftTableCk">
-            </iframe>
-            </div>
-
-          <form action="https://dutyapi.azurewebsites.netwanted" method="post">
-
-            <p style="padding-left: 580px; color: black;">** 신청버튼을 눌러야 선택한 원티드가 접수됩니다! **</p>
-          <div id="sendWanted" style="padding-left: 650px;">
-<input type="date" name="wantedDate" min="2022-05-01" max="2022-05-30">
-            <% if (statRule == '00100' || statRule == '10100') {%>
-            <select name="wantedShift">
-                <option value="">유형 선택</option>
-                <option value="yo">연차</option>
-                <option  value="mo">월차</option>
-                <option  value="ca">생리휴가</option>
-            </select>
-            <% } else if (statRule == '00000' || statRule == '00010'){%>
-                <select name="wantedShift">
-                    <option  value="">유형 선택</option>
-                    <option  value="D">데이</option>
-                    <option  value="E">이브닝</option>
-                    <option  value="/">일반오프</option>
-                    <option  value="ho">공휴오프</option>
-                    <option  value="yo">연차</option>
-                    <option  value="mo">월차</option>
-                    <option  value="ca">생리휴가</option>
-                </select>
-                <% } else if(statRule == '01000') { %>
-                    <option  value="/">일반오프</option>
-                    <option  value="ho">공휴오프</option>
-                    <option  value="yo">연차</option>
-                    <option  value="mo">월차</option>
-                    <option  value="ca">생리휴가</option>
-                    <% } else if (statRule == '00001') { %>
-                        <script>
-                            alert('신규교육대상자는 원티드 신청을 할 수 없습니다!')
-                            document.location.href="/normalMain"
-                            </script>
-                        <%}%>
-            <button type="submit">신청</button>
   </div>
-</form>
+  <nav class="main-menu">
+
+    <div>
+      <a class="logo" href="">
+      </a>
+    </div>
+    <div class="settings"></div>
+    <div class="scrollbar" id="style-1">
+
+      <img src="img/logo.png" width="50" height="42" , padding-bottom="20px" , padding-left="2px">
+
+      <ul>
+
+
+        <li>
+          <a href="#">
+            <i class="fa fa-user fa-lg"></i>
+            <span class="nav-text">
+              <%= empName %>님, 안녕하세요!
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <%if (authCode=='001' ){%>
+            <a href="/normalMain">
+              <%} else if (authCode=='010' ){%>
+                <a href="/dutyMain">
+                  <% } %>
+                    <i class="fa fa-home fa-lg"></i>
+                    <span class="nav-text">메인페이지</span>
+                </a>
+        </li>
+
+
+
+        <% if (authCode=='010' ){%>
+          <li>
+            <a href="/teamDutyAdmin">
+              <i class="fa fa-magic"></i>
+              <span class="nav-text">신규 듀티 작성</span>
+            </a>
+          </li>
+          <% } %>
+
+
+
+            <li class="darkerlishadow">
+              <%if (authCode=='001' ){%>
+                <a href="/normalMainDutyCK">
+
+                  <%} else if (authCode=='010' ){%>
+                    <a href="/teamDutyCheck">
+                      <% } %>
+                        <i class="fa fa-flag-checkered"></i>
+                        <span class="nav-text">우리팀 듀티 확인</span>
+                    </a>
+            </li>
+
+            <li class="darkerlishadow">
+              <a href="/wanted">
+                <i class="fa fa-calendar-plus-o"></i>
+                <span class="nav-text">신청근무 접수</span>
+              </a>
+            </li>
+
+      </ul>
+
+
+
+      <ul class="logout">
+        <li>
+          <a href="/logout">
+            <i class="fa fa-sign-out"></i>
+            <span class="nav-text">
+              로그아웃
+            </span>
+
+          </a>
+        </li>
+      </ul>
+  </nav>
+
+  <br>
+  <h2 style="padding-left: 520px; color: black;"> 현재 배치표를 확인 후 원티드 근무를 신청하세요</h2>
+  <div>
+    <iframe name="targetURL" class="iframe-preview center" width="100%" height="500"
+      style="border: none; margin-top: 10px;margin-left: 200px;width: 1180px;"
+      src="https://dutyweb.azurewebsites.net/shiftTableCk">
+    </iframe>
+  </div>
+
+  <form action="https://dutyapi.azurewebsites.net/wanted" method="post">
+
+    <p style="padding-left: 580px; color: black;">** 신청버튼을 눌러야 선택한 원티드가 접수됩니다! **</p>
+    <div id="sendWanted" style="padding-left: 650px;">
+      <input type="date" name="wantedDate" min="2022-05-01" max="2022-05-30">
+      <% if (statRule=='00100' || statRule=='10100' ) {%>
+        <select name="wantedShift">
+          <option value="">유형 선택</option>
+          <option value="yo">연차</option>
+          <option value="mo">월차</option>
+          <option value="ca">생리휴가</option>
+        </select>
+        <% } else if (statRule=='00000' || statRule=='00010' ){%>
+          <select name="wantedShift">
+            <option value="">유형 선택</option>
+            <option value="D">데이</option>
+            <option value="E">이브닝</option>
+            <option value="/">일반오프</option>
+            <option value="ho">공휴오프</option>
+            <option value="yo">연차</option>
+            <option value="mo">월차</option>
+            <option value="ca">생리휴가</option>
+          </select>
+          <% } else if(statRule=='01000' ) { %>
+            <option value="/">일반오프</option>
+            <option value="ho">공휴오프</option>
+            <option value="yo">연차</option>
+            <option value="mo">월차</option>
+            <option value="ca">생리휴가</option>
+            <% } else if (statRule=='00001' ) { %>
+              <script>
+                alert('신규교육대상자는 원티드 신청을 할 수 없습니다!')
+                document.location.href = "/normalMain"
+              </script>
+              <%}%>
+                <button type="submit">신청</button>
+    </div>
+  </form>
 
 
 
 
 
-        <script src="./js/cal.js"></script>
+  <script src="./js/cal.js"></script>
 
 
 </body>
+
 </html>
