@@ -21,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 router.get('/login', function (req, res, next) {
+  console.log(req.session)
   res.render('login', {
     isLogined: true,
     empName: req.session.empName,
