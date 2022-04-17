@@ -45,7 +45,7 @@
    <li>                                   
     <%if (authCode == '001'){%>
       <a href="/normalMain">
-        <%} else if (010){%>
+        <%} else if (authCode == '010'){%>
           <a href="/dutyMain">
           <% } %>
    <i class="fa fa-home fa-lg"></i>
@@ -63,12 +63,13 @@
     <li class="darkerlishadow">
       <%if (authCode == '001'){%>
     <a href="/normalMainDutyCK">
-      <%} else if (010){%>
-        <a href="/teamDutyCheck">
-        <% } %>
-    <i class="fa fa-flag-checkered"></i>
-    <span class="nav-text">내 듀티 확인</span>
-    </a>
+
+    <%} else if (authCode == '010'){%>
+      <a href="/teamDutyCheck">
+      <% } %>
+      <i class="fa fa-flag-checkered"></i>
+      <span class="nav-text">내 듀티 확인</span>
+      </a>
     </li>
  
     <li class="darkerlishadow">
@@ -95,32 +96,22 @@
    </ul>
            </nav>
 
-
-
-           <div class="sec_cal">
-            <h2 style="color: black;">원티드 근무를 신청하세요</h2>
-            <div class="cal_nav" style="color: black;">
-              <!-- <a href="javascript:;" class="nav-btn go-prev">이전</a> -->
-              <div class="year-month"></div><br>
-              <!-- <a href="javascript:;" class="nav-btn go-next">다음</a> -->
+<br>
+<h2 style="padding-left: 520px; color: black;" > 현재 배치표를 확인 후 원티드 근무를 신청하세요</h2>
+           <div>
+            <iframe
+                name="targetURL"
+                class="iframe-preview center"
+                width="100%"
+                height="500"
+                style="border: none; margin-top: 10px;margin-left: 200px;width: 1180px;"
+                src="http://localhost:3000/shiftTableCk">
+            </iframe>
             </div>
-            <br>
-            <div class="cal_wrap">
-              <div class="days">
-                <div class="day">월</div>
-                <div class="day">화</div>
-                <div class="day">수</div>
-                <div class="day">목</div>
-                <div class="day">금</div>
-                <div class="day">토</div>
-                <div class="day">일</div>
-              </div>
-              <div class="dates"></div>
-            </div>
-          </div>
 
           <form action="http://localhost:5000/wanted" method="post">
 
+            <p style="padding-left: 580px; color: black;">** 신청버튼을 눌러야 선택한 원티드가 접수됩니다! **</p>
           <div id="sendWanted" style="padding-left: 650px;">
 <input type="date" name="wantedDate" min="2022-05-01" max="2022-05-30">
             <% if (statRule == '00100' || statRule == '10100') {%>

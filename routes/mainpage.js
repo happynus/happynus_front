@@ -91,16 +91,10 @@ router.get("/teamDutyCheck", function (req, res, next) {
 
 // 일반근무자 권한 페이지
 router.get("/normalMain", function (req, res, next) {
-  request(checkCoworker, function (err, response, body) {
-    if (err) throw err;
-    var obj = body;
-    console.log("바디", body);
     res.render("normalMain", {
-      coworker: obj,
       isLogined: true,
       empNo: req.session.empNo,
       empName: req.session.empName,
-    });
   });
 });
 

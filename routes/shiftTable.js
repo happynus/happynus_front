@@ -28,7 +28,7 @@ app.get("/shiftTable", function (req, res) {
       //res.send(body);
       res.render("shiftTable", { emplist: body });
     }
-  );
+   } );
 });
 
 app.get("/shiftTableCk", function (req, res) {
@@ -37,9 +37,10 @@ app.get("/shiftTableCk", function (req, res) {
     if (err) {
       console.log("실패");
     } else {
-      //console.log(body);
-      //res.send(body);
-      res.render("shiftTableCk", { emplist: body });
+      res.render("shiftTableCk", {
+        emplist: body, 
+        teamNo: req.session.teamNo, 
+        empName: req.session.empName });
     }
   });
 });
@@ -50,8 +51,6 @@ app.get("/myDutyTable", function (req, res) {
     if (err) {
       console.log("실패");
     } else {
-      //console.log(body);
-      //res.send(body);
       res.render("myDutyTable", { emplist: body });
     }
   });
