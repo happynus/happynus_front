@@ -19,6 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended : true}));
 
 
+
 router.get('/wanted', function (req, res, next) {
   res.render('wanted', {
     isLogined: true,

@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/shiftTable", function (req, res) {
-  const shiftTableUrl = "http://localhost:5000/shiftTable";
+  const shiftTableUrl = "https://dutyapi.azurewebsites.net/shiftTable";
   request(shiftTableUrl, { json: true }, function (err, result, body) {
     //console.log(body);
     if (err) {
@@ -33,7 +33,7 @@ app.get("/shiftTable", function (req, res) {
 });
 
 app.get("/shiftTableCk", function (req, res) {
-  const shiftTableCkUrl = "http://localhost:5000/shiftTableCk";
+  const shiftTableCkUrl = "https://dutyapi.azurewebsites.net/shiftTableCk";
   request(shiftTableCkUrl, { json: true }, function (err, result, body) {
     if (err) {
       console.log("실패");
@@ -47,7 +47,7 @@ app.get("/shiftTableCk", function (req, res) {
 });
 
 app.get("/myDutyTable", function (req, res) {
-  const shiftTableCkUrl = "http://localhost:5000/myDutyTable";
+  const shiftTableCkUrl = "https://dutyapi.azurewebsites.net/myDutyTable";
   request(shiftTableCkUrl, { json: true }, function (err, result, body) {
     if (err) {
       console.log("실패");

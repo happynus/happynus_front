@@ -27,6 +27,14 @@ app.use(
     secret: "nextlevel",
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      domain: 'azurewebsites.net/',
+      path: '/',
+      maxAge: 24 * 6 * 60 * 10000,
+      sameSite: 'none',
+      httpOnly: true,
+      secure: true,
+    },
     store: new MySQLStore({
       host: "mysql-hnduty.mysql.database.azure.com",
       port: "3306",
@@ -36,6 +44,8 @@ app.use(
     }),
   })
 );
+
+
 
 //Route_zone
 var level = require("./routes/level.js");

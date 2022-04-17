@@ -2,7 +2,7 @@
 var monthEl = $(".c-main");
 var dataCel = $(".c-cal__cel");
 var dateObj = new Date();
-var month = dateObj.today.getMonth() + 2;
+var month = dateObj.getMonth() + 2;
 var day = dateObj.getDate();
 var year = dateObj.getFullYear();
 
