@@ -18,17 +18,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const superMainUrl = "http://localhost:5000/superMain";
-const dutyAdminUrl = "http://localhost:5000/dutyMain";
-const normalUrl = "http://localhost:5000/normalMain";
-const normalMainDutyCheck = "http://localhost:5000/normalMainDutyCheck";
-const teamDutyCheck = "http://localhost:5000/teamDutyCheck"
+// const superMainUrl = "http://localhost:5000/superMain";
+// const dutyAdminUrl = "http://localhost:5000/dutyMain";
+// const normalUrl = "http://localhost:5000/normalMain";
+// const normalMainDutyCheck = "http://localhost:5000/normalMainDutyCheck";
+// const teamDutyCheck = "http://localhost:5000/teamDutyCheck"
 //const checkCoworker = "https://dutyapi.azurewebsites.net/api/emp/coworkers";
 
 
 // 슈퍼관리자 권한 페이지
 router.get("/superMain", function (req, res, next) {
-  const shiftTableUrl = "http://localhost:5000/shiftTable";
+  const shiftTableUrl = "https://dutyapi.azurewebsites.net/shiftTable";
   request(shiftTableUrl, { json: true }, function (err, result, body) {
     if (err) {
       console.log("실패");
@@ -80,7 +80,7 @@ router.get("/dutyMain", function (req, res, next) {
 
 // 듀티배치를 할 수 있는 shiftTable이 여기로 넘어옴
 router.get("/teamDutyAdmin", function (req, res, next) {
-  const shiftTableUrl = "http://localhost:5000/shiftTable";
+  const shiftTableUrl = "https://dutyapi.azurewebsites.net/shiftTable";
   request(shiftTableUrl, { json: true }, function (err, result, body) {
     if (err) {
       console.log("실패");
@@ -100,7 +100,7 @@ router.get("/teamDutyAdmin", function (req, res, next) {
 });
 
 router.get("/teamDutyCheck", function (req, res, next) {
-  const shiftTableUrl = "http://localhost:5000/shiftTable";
+  const shiftTableUrl = "https://dutyapi.azurewebsites.net/shiftTable";
   request(shiftTableUrl, { json: true }, function (err, result, body) {
     if (err) {
       console.log("실패");
@@ -130,7 +130,7 @@ router.get("/normalMain", function (req, res, next) {
 });
 
 router.get("/normalMainDutyCK", function (req, res, next) {
-  const shiftTableUrl = "http://localhost:5000/shiftTable";
+  const shiftTableUrl = "https://dutyapi.azurewebsites.net/shiftTable";
   request(shiftTableUrl, { json: true }, function (err, result, body) {
     if (err) {
       console.log("실패");
