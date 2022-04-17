@@ -130,12 +130,22 @@ router.get("/normalMain", function (req, res, next) {
 });
 
 router.get("/normalMainDutyCK", function (req, res, next) {
-  //request(normalMainDutyCheck, function (err, res) {});
-  res.render("normalMainDutyCK", {
-    isLogined: true,
-    empName: req.session.empName,
-    authCode: req.session.authCode,
-    empNo: req.session.empNo,
+  const shiftTableUrl = "http://localhost:5000/shiftTable";
+  request(shiftTableUrl, { json: true }, function (err, result, body) {
+    if (err) {
+      console.log("실패");
+    } else {
+      //console.log(body);
+      //res.send(body);
+      res.render("normalMainDutyCK", {
+        isLogined: true,
+        emplist: body,
+        empName: req.session.empName,
+        authCode: req.session.authCode,
+        empNo: req.session.empNo,
+        teamNo: req.session.teamNo,
+      });
+    }
   });
 });
 
