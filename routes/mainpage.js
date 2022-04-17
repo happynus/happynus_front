@@ -22,17 +22,28 @@ const superMainUrl = "http://localhost:5000/superMain";
 const dutyAdminUrl = "http://localhost:5000/dutyMain";
 const normalUrl = "http://localhost:5000/normalMain";
 const normalMainDutyCheck = "http://localhost:5000/normalMainDutyCheck";
-const teamDutyCheck ="http://localhost:5000/teamDutyCheck"
+const teamDutyCheck = "http://localhost:5000/teamDutyCheck"
 //const checkCoworker = "https://dutyapi.azurewebsites.net/api/emp/coworkers";
 
 
 // 슈퍼관리자 권한 페이지
 router.get("/superMain", function (req, res, next) {
-  res.render("superMain", {
-    isLogined: true,
-    empName: req.session.empName,
-    authCode: req.session.authCode,
-    empNo: req.session.empNo,
+  const shiftTableUrl = "http://localhost:5000/shiftTable";
+  request(shiftTableUrl, { json: true }, function (err, result, body) {
+    if (err) {
+      console.log("실패");
+    } else {
+      //console.log(body);
+      //res.send(body);
+      res.render("superMain", {
+        isLogined: true,
+        emplist: body,
+        empName: req.session.empName,
+        authCode: req.session.authCode,
+        empNo: req.session.empNo,
+        teamNo: req.session.teamNo,
+      });
+    }
   });
 });
 
@@ -67,24 +78,44 @@ router.get("/dutyMain", function (req, res, next) {
   });
 });
 
+// 듀티배치를 할 수 있는 shiftTable이 여기로 넘어옴
 router.get("/teamDutyAdmin", function (req, res, next) {
-  //request(teamDutyAdmin, function (err, res) {});
-  res.render("teamDutyAdmin", {
-    isLogined: true,
-    empName: req.session.empName,
-    authCode: req.session.authCode,
-    empNo: req.session.empNo,
+  const shiftTableUrl = "http://localhost:5000/shiftTable";
+  request(shiftTableUrl, { json: true }, function (err, result, body) {
+    if (err) {
+      console.log("실패");
+    } else {
+      //console.log(body);
+      //res.send(body);
+      res.render("teamDutyAdmin", {
+        isLogined: true,
+        emplist: body,
+        empName: req.session.empName,
+        authCode: req.session.authCode,
+        empNo: req.session.empNo,
+        teamNo: req.session.teamNo,
+      });
+    }
   });
 });
 
 router.get("/teamDutyCheck", function (req, res, next) {
-  //request(teamDutyCheck, function (err, res) {});
-  res.render("teamDutyCheck", {
-    isLogined: true,
-    empName: req.session.empName,
-    authCode: req.session.authCode,
-    empNo: req.session.empNo,
-    teamNo: req.session.teamNo
+  const shiftTableUrl = "http://localhost:5000/shiftTable";
+  request(shiftTableUrl, { json: true }, function (err, result, body) {
+    if (err) {
+      console.log("실패");
+    } else {
+      //console.log(body);
+      //res.send(body);
+      res.render("teamDutyCheck", {
+        isLogined: true,
+        emplist: body,
+        empName: req.session.empName,
+        authCode: req.session.authCode,
+        empNo: req.session.empNo,
+        teamNo: req.session.teamNo,
+      });
+    }
   });
 });
 

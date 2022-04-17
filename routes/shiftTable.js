@@ -19,8 +19,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/shiftTable", function (req, res) {
-  const shiftTableUrl = "https://dutyapi.azurewebsites.net/shiftTable";
+  const shiftTableUrl = "http://localhost:5000/shiftTable";
   request(shiftTableUrl, { json: true }, function (err, result, body) {
+    //console.log(body);
     if (err) {
       console.log("실패");
     } else {
@@ -28,7 +29,7 @@ app.get("/shiftTable", function (req, res) {
       //res.send(body);
       res.render("shiftTable", { emplist: body });
     }
-  );
+  });
 });
 
 app.get("/shiftTableCk", function (req, res) {
