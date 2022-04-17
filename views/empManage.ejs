@@ -1,214 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>해피너스 * 근무자 관리</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>해피너스 * 근무자 관리</title>
 
-    <link rel="stylesheet" href="./css/superMain.css">
-    <link rel="stylesheet" href="./css/superEmp.css">
+  <link rel="stylesheet" href="./css/superMain.css">
+  <link rel="stylesheet" href="./css/superEmp.css">
 
-<link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-<link rel="stylesheet" href="./css/owl.carousel.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
-
-
-
+  <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./css/owl.carousel.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
 
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="./css/bootstrap.min.css">
-<
 
-</head>
+
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  < </head>
+
 <body>
 
 
 
-</div><nav class="main-menu">
+  </div>
+  <nav class="main-menu">
 
 
-  
+
     <div>
-       <a class="logo" href="">
-       </a> 
-     </div> 
-   <div class="settings"></div>
-   <div class="scrollbar" id="style-1">
-     
-    <img src="img/logo.png" width="50" height="42", padding-bottom="20px",  padding-left="2px">
+      <a class="logo" href="">
+      </a>
+    </div>
+    <div class="settings"></div>
+    <div class="scrollbar" id="style-1">
 
-   <ul>
-    
-   <li class="darkerli">                                 
-   <a href="#">
-   <i class="fa fa-user fa-lg"></i>
-   <span class="nav-text"> <%= empName %>님, 안녕하세요!</span>
-   </a>
-   </li>   
-   
-   
-   <li>                                   
-    <a href="/superMain">
-    <i class="fa fa-home fa-lg"></i>
-    <span class="nav-text">메인페이지</span>
-    </a>
-    </li>   
-       
-       
-     
-   </li>
-   <li>
-   <a href="/empManage">
-   <i class="fa fa-user-md"></i>
-   <span class="nav-text">근무자 관리</span>
-   </a>
-   </li>
-     
-   <li >
-   <a href="#">
-   <i class="fa fa-desktop fa-lg"></i>
-   <span class="nav-text">듀티 컨펌</span>
-   </a>
-   </li>
-     
-   </ul>
+      <img src="img/logo.png" width="50" height="42" , padding-bottom="20px" , padding-left="2px">
 
-     
-   <ul class="logout">
-   <li>
-<a href="/logout">
-                            <i class="fa fa-sign-out"></i>
-                           <span class="nav-text">
-                               로그아웃 
-                           </span>
-                           
-                       </a>
-   </li>
-   </ul>
-           </nav>
-           
+      <ul>
+
+        <li class="darkerli">
+          <a href="/superMain">
+            <i class="fa fa-user fa-lg"></i>
+            <span class="nav-text">
+              <%= empName %>님, 안녕하세요!
+            </span>
+          </a>
+        </li>
+
+
+        <li>
+          <a href="/superMain">
+            <i class="fa fa-home fa-lg"></i>
+            <span class="nav-text">메인페이지</span>
+          </a>
+        </li>
 
 
 
-           <div class="content">
-    
-            <div class="container">
-              <h2 class="mb-5" style="margin-left: 461px;">전체 근무자 관리</h2>
-        
-              <div class="col-sm-6">
-                <div class="search-box">
-                    <div class="input-group" style="bottom: 0px;left: 300px;">								
-                        <input type="text" id="search" class="form-control" placeholder="팀별 검색">
-                        <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
-                    </div>
-                </div>
-              </div>
-              <br>
-              <br>
-              <div class="table-responsive">
+        </li>
+        <li>
+          <a href="/empManage">
+            <i class="fa fa-user-md"></i>
+            <span class="nav-text">근무자 관리</span>
+          </a>
+        </li>
 
-<div class="col-sm-4">
-  <button type="button" class="btn btn-info add-new" style="width: 86px;height: 34px;" > 신규+ </button>
-</div>
-<br>
-                <table class="table custom-table">
-                  <thead>
-                    <tr>
-                      <th scope="col">
-                        <label class="control control--checkbox">
-                          <input type="checkbox" class="js-check-all"/>
-                          <div class="control__indicator"></div>
-                        </label>
-                      </th>
-                      <th scope="col">사번</th>
-                      <th scope="col">이름</th>
-                      <th scope="col">부서명</th>
-                      <th scope="col">팀명</th>
-                      <th scope="col">직급</th>
-                      <th scope="col">입사일</th>
-                      <th scope="col">연락처</th>
-                      <th scope="col">편집</th>
-                    </tr>
-                  </thead>
-                  <tbody>
+        <!-- <li>
+          <a href="#">
+            <i class="fa fa-desktop fa-lg"></i>
+            <span class="nav-text">듀티 컨펌</span>
+          </a>
+        </li> -->
 
-                    <% for(let i=0; i<emps.length; i++){%>
-                    <tr>
-                      <th scope="row">
-                        <label class="control control--checkbox">
-                          <input type="checkbox"/>
-                          <div class="control__indicator"></div>
-                        </label>
-                      </th>
-                      <td style="width: 124px;">
-                        <%=emps[i].empNo%>
-                      </td>
-                      
-                      <td style="width: 150px;">
-                        <%=emps[i].empName%>
-                      </td>
-                      
-                      <!-- <td style="width: 200px;">
+      </ul>
+
+
+      <ul class="logout">
+        <li>
+          <a href="/logout">
+            <i class="fa fa-sign-out"></i>
+            <span class="nav-text">
+              로그아웃
+            </span>
+
+          </a>
+        </li>
+      </ul>
+  </nav>
+
+
+
+
+  <div class="content">
+
+    <div class="container">
+      <h2 class="mb-5" style="margin-left: 461px;">전체 근무자 관리</h2>
+
+      <div class="col-sm-6">
+        <div class="search-box">
+          <div class="input-group" style="bottom: 0px;left: 300px;">
+            <input type="text" id="search" class="form-control" placeholder="팀별 검색">
+            <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="table-responsive">
+
+        <div class="col-sm-4">
+          <button type="button" class="btn btn-info add-new" style="width: 86px;height: 34px;"> 신규+ </button>
+        </div>
+        <br>
+        <table class="table custom-table">
+          <thead>
+            <tr>
+              <th scope="col">
+                <label class="control control--checkbox">
+                  <input type="checkbox" class="js-check-all" />
+                  <div class="control__indicator"></div>
+                </label>
+              </th>
+              <th scope="col">사번</th>
+              <th scope="col">이름</th>
+              <th scope="col">부서명</th>
+              <th scope="col">팀명</th>
+              <th scope="col">직급</th>
+              <th scope="col">입사일</th>
+              <th scope="col">연락처</th>
+              <th scope="col">편집</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <% for(let i=0; i<emps.length; i++){%>
+              <tr>
+                <th scope="row">
+                  <label class="control control--checkbox">
+                    <input type="checkbox" />
+                    <div class="control__indicator"></div>
+                  </label>
+                </th>
+                <td style="width: 124px;">
+                  <%=emps[i].empNo%>
+                </td>
+
+                <td style="width: 150px;">
+                  <%=emps[i].empName%>
+                </td>
+
+                <!-- <td style="width: 200px;">
                         <%=emps[i].deptName%>
                         <small class="d-block"><%=emps[i].teamName%></small>
                       </td> -->
 
-                      <td style="width: 190px;">
-                        <%=emps[i].deptName%>
-                    </td>
+                <td style="width: 190px;">
+                  <%=emps[i].deptName%>
+                </td>
 
-                    <td style="width: 140px;">
-                      <%=emps[i].teamName%>
-                  </td>
-                      
-                      <td style="width: 140px;">
-                          <%=emps[i].position%>
-                      </td>
-                      
-                      <td style="width: 200px;"><%=emps[i].empEntry%>
-                      </td>
-                      
-                      <td style="width: 200px;">
-                        <%=emps[i].phoneNum%>
-                        </td>
-                  
-                        <td>
-                          <a class="add" title="저장" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                          <a class="edit" title="수정" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                          <a class="delete" title="삭제" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                      </td>
+                <td style="width: 140px;">
+                  <%=emps[i].teamName%>
+                </td>
 
-                    </tr>
+                <td style="width: 140px;">
+                  <%=emps[i].position%>
+                </td>
 
-                    <%}%>
-                    
-                  </tbody>
-                </table>
-              </div>
-        
-        
-            </div>
-        
-          </div>
-          
-               
-          <script src="./js/jquery-3.3.1.min.js"></script>
-          <script src="./js/popper.min.js"></script>
-          <script src="./js/bootstrap.min.js"></script>
-          <script src="./js/main.js"></script>   
-          <script src="./js/empManage.js"></script>  
+                <td style="width: 200px;">
+                  <%=emps[i].empEntry%>
+                </td>
+
+                <td style="width: 200px;">
+                  <%=emps[i].phoneNum%>
+                </td>
+
+                <td>
+                  <a class="add" title="저장" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                  <a class="edit" title="수정" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                  <a class="delete" title="삭제" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                </td>
+
+              </tr>
+
+              <%}%>
+
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+  <script src="./js/jquery-3.3.1.min.js"></script>
+  <script src="./js/popper.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/main.js"></script>
+  <script src="./js/empManage.js"></script>
 
 
 </body>
+
 </html>

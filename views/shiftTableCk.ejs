@@ -18,23 +18,35 @@
           <th>직위</th>
           <th>사번</th>
           <th>성명</th>
-          <% for (var j = 1; j < 32; j++) { %>
-          <td><%= j %></td>
-          <% } %>
+          <% for (var j=1; j < 32; j++) { %>
+            <td>
+              <%= j %>
+            </td>
+            <% } %>
         </tr>
       </thead>
       <tbody>
         <% emplist.forEach(function (emplist) { %>
-        <tr>
-          <td><%=emplist.teamNo %></td>
-          <td><%=emplist.position %></td>
-          <td><%=emplist.empNo %></td>
-          <td><%=emplist.empName %></td>
-          <% for (var i = 0; i < 31; i++) { %>
-          <td onclick=""><%=emplist.duty[i] %></td>
-          <% } %>
-        </tr>
-        <% }) %>
+          <tr>
+            <td>
+              <%=emplist.teamName %>
+            </td>
+            <td>
+              <%=emplist.position %>
+            </td>
+            <td>
+              <%=emplist.empNo %>
+            </td>
+            <td>
+              <%=emplist.empName %>
+            </td>
+            <% for (var i=0; i < 31; i++) { %>
+              <td onclick="">
+                <%=emplist.duty[i] %>
+              </td>
+              <% } %>
+          </tr>
+          <% }) %>
       </tbody>
     </table>
   </body>
